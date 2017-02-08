@@ -9,22 +9,33 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Analysis of Stocks for Five Major Companies
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+We'll look at the monthly stock prices of five companies: IBM, General Electric (GE), Procter and Gamble, Coca Cola and Boeing.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+* **Date:** the date of the stock price always at the first of the month.
+* **StockPrice:** the average stock price of the company in the given month.
+
 
 ```{r cars}
-summary(cars)
+#Read in stock data
+IBM <- read.csv("IBMStock.csv")
+GE <- read.csv("GEStock.csv")
+ProcterGamble <- read.csv("ProcterGambleStock.csv")
+CocaCola <- read.csv("CocaColaStock.csv")
+Boeing <- read.csv("BoeingStock.csv")
 ```
 
-## Including Plots
+### Summary Statistics
 
-You can also embed plots, for example:
+First, we need to convert the dates to R format.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r dates}
+IBM$Date <- as.Date(IBM$Date, "%m/%d/%y")
+GE$Date <- as.Date(GE$Date, "%m/%d/%y")
+CocaCola$Date <- as.Date(CocaCola$Date, "%m/%d/%y")
+ProcterGamble$Date <- as.Date(ProcterGamble$Date, "%m/%d/%y")
+Boeing$Date <- as.Date(Boeing$Date, "%m/%d/%y")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
