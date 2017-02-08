@@ -38,4 +38,18 @@ ProcterGamble$Date <- as.Date(ProcterGamble$Date, "%m/%d/%y")
 Boeing$Date <- as.Date(Boeing$Date, "%m/%d/%y")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Each of the data frames is same size.  The summary information is:
+```{r}
+str(IBM)
+summary(IBM)
+```
+## Data Visualization
+
+Coca-Cola vs. Procter & Gamble Stock Price
+```{r}
+plot(CocaCola$Date, CocaCola$StockPrice, type="l", col="red")
+lines(ProcterGamble$Date, ProcterGamble$StockPrice, col="blue")
+#draw a line at a certain date
+abline(v=as.Date(c("2000-03-01")), lwd=2, lty=2)
+```
+
